@@ -1,98 +1,101 @@
 import {
-    Index, Entity, PrimaryColumn, Column, OneToOne, OneToMany, ManyToOne, ManyToMany, JoinColumn, JoinTable, RelationId,
-    PrimaryGeneratedColumn
+  Entity, Column, PrimaryGeneratedColumn,
 } from 'typeorm';
 
-@Entity('user')
+/**
+ * 用户表
+ */
+
+@Entity()
 export class User {
-    @PrimaryGeneratedColumn({
-        type: 'mediumint',
-    })
-    id: number;
+  @PrimaryGeneratedColumn({
+    type: 'mediumint',
+  })
+  id: number;
 
-    @Column({
-        nullable: false,
-        unique: true,
-        length: 60,
-        default: '',
-    })
-    username: string;
+  @Column({
+    unique: true,
+    length: 60,
+    default: '',
+    comment: '用户姓名',
+  })
+  username: string;
 
-    @Column({
-        nullable: false,
-        length: 32,
-        default: '',
-    })
-    password: string;
+  @Column({
+    length: 32,
+    default: '',
+    comment: '密码',
+  })
+  password: string;
 
-    @Column('tinyint', {
-        nullable: false,
-        default: '0',
-        name: 'gender',
-    })
-    gender: number;
+  @Column('tinyint', {
+    default: '0',
+    name: 'gender',
+    comment: '性别',
+  })
+  gender: number;
 
-    @Column('int', {
-        nullable: false,
-        default: '0',
-    })
-    birthday: number;
+  @Column('int', {
+    default: '0',
+    comment: '生日',
+  })
+  birthday: number;
 
-    @Column('int', {
-        nullable: false,
-        default: '0',
-    })
-    registerTime: number;
+  @Column('int', {
+    default: '0',
+    comment: '注册时间',
+  })
+  registerTime: number;
 
-    @Column('int', {
-        nullable: false,
-        default: '0',
-    })
-    lastLoginTime: number;
+  @Column('int', {
+    default: '0',
+    comment: '最后登录时间',
+  })
+  lastLoginTime: number;
 
-    @Column('varchar', {
-        nullable: false,
-        length: 15,
-        default: '',
-    })
-    lastLoginIp: string;
+  @Column('varchar', {
+    length: 15,
+    default: '',
+    comment: '最后登录IP',
+  })
+  lastLoginIp: string;
 
-    @Column('tinyint', {
-        nullable: false,
-        default: '0',
-    })
-    userLevelId: number;
+  @Column('tinyint', {
+    default: '0',
+    comment: '用户等级ID，关联用户等级表',
+  })
+  userLevelId: number;
 
-    @Column({
-        nullable: false,
-        length: 60,
-    })
-    nickname: string;
+  @Column({
+    length: 60,
+    comment: '别名',
+  })
+  nickname: string;
 
-    @Column({
-        nullable: false,
-        length: 20,
-    })
-    mobile: string;
+  @Column({
+    length: 20,
+    comment: '手机号',
+  })
+  mobile: string;
 
-    @Column({
-        nullable: false,
-        length: 45,
-        default: '',
-    })
-    registerIp: string;
+  @Column({
+    length: 45,
+    default: '',
+    comment: '注册IP',
+  })
+  registerIp: string;
 
-    @Column({
-        nullable: false,
-        length: 255,
-        default: '',
-    })
-    avatar: string;
+  @Column({
+    length: 255,
+    default: '',
+    comment: '头像',
+  })
+  avatar: string;
 
-    @Column({
-        nullable: false,
-        length: 50,
-        default: '',
-    })
-    weixinOpenid: string;
+  @Column({
+    length: 50,
+    default: '',
+    comment: '微信Id',
+  })
+  weixinOpenid: string;
 }
